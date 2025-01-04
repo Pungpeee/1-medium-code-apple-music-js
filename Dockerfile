@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install --save-dev ajv@6.12.6
+RUN npm install ajv@latest ajv-keywords@latest
 RUN npm install --frozen-lockfile
 
 # Copy the entire project to the working directory
