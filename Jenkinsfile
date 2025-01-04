@@ -69,22 +69,22 @@ pipeline {
                 checkout scm
             }
         }
-        // stage('Code - SonarQube Scan-ls') {
-        //     steps {
-        //         script {
-        //             docker.image('sonarsource/sonar-scanner-cli:latest').inside {
-        //                 sh '''
-        //                 sonar-scanner \
-        //                     -Dsonar.projectKey=1-medium-code-apple-music-js \
-        //                     -Dsonar.sources=. \
-        //                     -Dsonar.host.url=${SONAR_HOST_URL} \
-        //                     -Dsonar.login=${SONAR_TOKEN}
-        //                 '''
-        //             }
+        stage('Code - SonarQube Scan-ls') {
+            steps {
+                script {
+                    docker.image('sonarsource/sonar-scanner-cli:latest').inside {
+                        sh '''
+                        sonar-scanner \
+                            -Dsonar.projectKey=1-medium-code-apple-music-js \
+                            -Dsonar.sources=. \
+                            -Dsonar.host.url=${SONAR_HOST_URL} \
+                            -Dsonar.login=${SONAR_TOKEN}
+                        '''
+                    }
 
-        //         }
-        //     }
-        // }
+                }
+            }
+        }
 
         stage('Build Docker Image-ls') {
             steps {
@@ -168,7 +168,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        docker exec devsecops-zap zap-baseline.py -t http://20.212.250.197:1001 -r zapreport-1-medium-code-apple-music-js-jk1.html -I   || true
+                        docker exec devsecops-zap zap-baseline.py -t http://20.212.250.197:1001 -r /zap/wrk/zapreport-1-medium-code-apple-music-js-jk1.html -I   || true
                           
                     '''
                     sh 'docker cp devsecops-zap:/zap/wrk/zapreport-1-medium-code-apple-music-js-jk.html /mnt/zap-reports/zapreport-1-medium-code-apple-music-js-jk.html        '
