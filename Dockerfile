@@ -9,7 +9,6 @@ COPY package*.json ./
 
 # Install dependencies
 RUN npm install ajv@latest ajv-keywords@latest
-RUN npm install --frozen-lockfile
 
 # Copy the entire project to the working directory
 COPY . .
