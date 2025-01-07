@@ -8,13 +8,13 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install ajv@latest ajv-keywords@latest
+RUN npm install 
 
 # Copy the entire project to the working directory
 COPY . .
 
 # Expose the application's port
-EXPOSE 3000
+EXPOSE 8080
 
 # Define the command to run the application
 CMD ["npm", "start"]
