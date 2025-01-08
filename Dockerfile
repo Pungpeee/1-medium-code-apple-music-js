@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install 
+RUN npm install ajv@latest ajv-keywords@latest
 
 # Copy the entire project to the working directory
 COPY . .
