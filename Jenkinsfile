@@ -120,36 +120,36 @@ pipeline {
             }
         }
 
-        stage('Build Fix - Snyk Scan Image-ls') {
-            steps {
-                withEnv(["NODE_TLS_REJECT_UNAUTHORIZED=0"]) {
-                    sh 'snyk container test --token=$SNYK_TOKEN --org=f7c31024-a0f2-4c34-bdbb-7aef1b436117 --project-name=Pungpeee/1-medium-code-apple-music-js pungpeee19/1-medium-code-apple-music-js --file=requirements.txt --allow-missing -d'
-                }
-                    snykSecurity(
-                        snykInstallation: 'snyk@manual',
-                        snykTokenId: 'SNYK_TOKEN',
-                        projectName: 'Pungpeee/1-medium-code-apple-music-js',
-                        failOnIssues: false,
-                        targetFile: './Dockerfile',
-                        severity: 'critical'
-                    )
-                // script {
-                //    withCredentials([string(credentialsId: 'SNYK_TOKEN', variable: 'SNYK_TOKEN')]) {
-                //        sh 'snyk container monitor --token=$SNYK_TOKEN pungpeee19/1-medium-code-apple-music-js --org=f7c31024-a0f2-4c34-bdbb-7aef1b436117 -d'
-                //    }
-                //      sh '''   
-                //      // # Run Snyk container scan
-                //         // snyk container test pungpeee19/1-medium-code-apple-music-js:latest \
-                //         //     --severity-threshold=critical \
-                //         //     --file=./Dockerfile \
-                //         //     --json
+        // stage('Build Fix - Snyk Scan Image-ls') {
+        //     steps {
+        //         withEnv(["NODE_TLS_REJECT_UNAUTHORIZED=0"]) {
+        //             sh 'snyk container test --token=$SNYK_TOKEN --org=f7c31024-a0f2-4c34-bdbb-7aef1b436117 --project-name=Pungpeee/1-medium-code-apple-music-js pungpeee19/1-medium-code-apple-music-js --file=requirements.txt --allow-missing -d'
+        //         }
+        //             snykSecurity(
+        //                 snykInstallation: 'snyk@manual',
+        //                 snykTokenId: 'SNYK_TOKEN',
+        //                 projectName: 'Pungpeee/1-medium-code-apple-music-js',
+        //                 failOnIssues: false,
+        //                 targetFile: './Dockerfile',
+        //                 severity: 'critical'
+        //             )
+        //         // script {
+        //         //    withCredentials([string(credentialsId: 'SNYK_TOKEN', variable: 'SNYK_TOKEN')]) {
+        //         //        sh 'snyk container monitor --token=$SNYK_TOKEN pungpeee19/1-medium-code-apple-music-js --org=f7c31024-a0f2-4c34-bdbb-7aef1b436117 -d'
+        //         //    }
+        //         //      sh '''   
+        //         //      // # Run Snyk container scan
+        //         //         // snyk container test pungpeee19/1-medium-code-apple-music-js:latest \
+        //         //         //     --severity-threshold=critical \
+        //         //         //     --file=./Dockerfile \
+        //         //         //     --json
                         
-                //         // # Attempt to fix vulnerabilities
-                //         // snyk fix
-                //     '''
-                // }
-            }
-        }
+        //         //         // # Attempt to fix vulnerabilities
+        //         //         // snyk fix
+        //         //     '''
+        //         // }
+        //     }
+        // }
         stage('Push Docker Image-ls') {
             steps {
                 script {
