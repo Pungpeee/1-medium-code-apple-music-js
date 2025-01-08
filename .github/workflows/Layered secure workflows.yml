@@ -28,7 +28,7 @@ jobs:
         run: |
           docker build \
             --target ${{ matrix.target }} \
-            -t pungpeee19/1-medium-code-${{ matrix.target }}:latest .
+            -t pungpeee19/1-medium-code:latest .
 
 
       - name: Run Snyk to check for vulnerabilities
