@@ -85,33 +85,40 @@ pipeline {
                 }
             }
         }
-        stage('Prepare and Build in Parallel') {
+        stage('Build in Parallel') {
             parallel {
-                stage('Install Dependencies') {
+                stage('Build Dependencies') {
                     steps {
                         script {
-                            sh 'docker build --target deps -t pungpeee19/1-medium-code-apple-music-js:deps .'
+                            sh '''
+                            docker build --target deps \
+                                -t pungpeee19/1-medium-code-apple-music-js:deps .
+                            '''
                         }
                     }
                 }
                 stage('Build Application') {
                     steps {
                         script {
-                            sh 'docker build --target builder -t pungpeee19/1-medium-code-apple-music-js:builder .'
+                            sh '''
+                            docker build --target builder \
+                                -t pungpeee19/1-medium-code-apple-music-js:builder .
+                            '''
+                        }
+                    }
+                }
+                stage('Build Runtime') {
+                    steps {
+                        script {
+                            sh '''
+                            docker build --target runtime \
+                                -t pungpeee19/1-medium-code-apple-music-js:latest .
+                            '''
                         }
                     }
                 }
             }
         }
-
-        stage('Build Docker Image-ls') {
-            steps {
-                script {
-                    sh 'docker build --target runtime -t pungpeee19/1-medium-code-apple-music-js:latest .'
-                }
-            }
-        }
-
 
         stage('Build Fix - Snyk Scan Image-ls') {
             steps {
