@@ -9,13 +9,16 @@ COPY package*.json /app
 ENV NODE_OPTIONS=--openssl-legacy-provider
 
 # Install dependencies
+RUN npm update
 RUN npm install --frozen-lockfile
 
 # Copy the entire project to the working directory
 COPY . /app
 
+RUN npm run build
+
 # Expose the application's port
-EXPOSE 8080
+EXPOSE 3000
 
 # Define the command to run the application
 CMD ["npm", "start"]

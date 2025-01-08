@@ -47,7 +47,7 @@
 #           fi
 
 #           # Run the new container
-#           docker run -d --restart=always -p 1001:8080 --name 1-medium-code-apple-music-js pungpeee19/1-medium-code-apple-music-js:latest
+#           docker run -d --restart=always -p 1001:3000 --name 1-medium-code-apple-music-js pungpeee19/1-medium-code-apple-music-js:latest
 
 #           # Verify running containers
 #           docker ps -a
@@ -69,6 +69,6 @@
 #       #       ssh -o StrictHostKeyChecking=no ${{ secrets.USER }}@${{ secrets.HOST }} 
 #       #       docker pull pungpeee19/1-medium-code-apple-music-js:latest
 #       #       docker images
-#       #       docker run -d --restart=always -p 1001:8080 \
+#       #       docker run -d --restart=always -p 1001:3000 \
 #       #           --name 1-medium-code-apple-music-js \
 #       #           pungpeee19/1-medium-code-apple-music-js:latest
