@@ -8,11 +8,11 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install 
+RUN npm install --frozen-lockfile
 
 # Copy the entire project to the working directory
 COPY . .
-RUN npm run build
+
 # Expose the application's port
 EXPOSE 8080
 
