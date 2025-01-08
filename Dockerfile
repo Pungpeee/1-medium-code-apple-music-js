@@ -9,7 +9,7 @@ COPY package*.json /app
 ENV NODE_OPTIONS=--openssl-legacy-provider
 
 # Install dependencies
-RUN npm update
+# RUN npm update
 RUN npm install --frozen-lockfile
 
 # Copy the entire project to the working directory
