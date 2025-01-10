@@ -8,9 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        target: [deps, builder, runtime]
+    # strategy:
+      # matrix:
+      #   target: [deps, builder, runtime]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -26,9 +26,7 @@ jobs:
       #   run: docker build -t pungpeee19/1-medium-code-apple-music-js:latest .
       - name: Build image
         run: |
-          docker build \
-            --target ${{ matrix.target }} \
-            -t pungpeee19/1-medium-code:latest .
+          docker build -t pungpeee19/1-medium-code:latest .
 
 
       - name: Run Snyk to check for vulnerabilities
