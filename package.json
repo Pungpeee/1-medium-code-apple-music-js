@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "http://tannerv.com/music",
   "dependencies": {
-    "feather-icons": "^4.7.3",
+    "feather-icons": "^4.29.2",
     "react": "^16.5.0",
     "react-dom": "^16.12.0",
     "react-lazy-load": "^3.0.13",
